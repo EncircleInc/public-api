@@ -105,7 +105,7 @@ window.onload = function() {
 
     if (document.location.protocol == 'file:' || document.location.search.indexOf("show_internal_urls") != -1) {
         urls.push({
-            url: 'http://api-staging.encircleapp.com/openapi_v3.json',
+            url: 'https://api-staging.encircleapp.com/openapi_v3.json',
             name: 'api-staging.encircleapp.com',
         }, {
             url: 'http://localhost:8890/openapi_v3.json',
