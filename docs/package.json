@@ -1,0 +1,6 @@
+{
+  "name": "encircleinc-public-api-docs",
+  "dependencies": {
+    "swagger-ui-dist": "^3.4.5"
+  }
+}
