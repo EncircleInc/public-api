@@ -71,15 +71,31 @@
   </script>
   <script>
    window.onload = function() {
+    var parseQuery = function(queryString) {
+        var query = {};
+        var pairs = (queryString.charAt(0) === '?' ? queryString.substr(1) : queryString).split('&');
+        for (var i = 0; i < pairs.length; ++i) {
+            var pair = pairs[i].split('=');
+            query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+        }
+        return query;
+    };
+
+    var query = parseQuery(document.location.search);
+
     var urls = [];
 
-    if (document.location.protocol == 'file:' || document.location.search.indexOf("show_internal_urls") != -1) {
+    if (document.location.protocol == 'file:') {
         urls.push({
-            url: 'https://api-staging.encircleapp.com/openapi_v3.json',
-            name: 'api-staging.encircleapp.com',
-        }, {
             url: 'http://localhost:8890/openapi_v3.json',
             name: 'localhost:8890',
+        });
+    }
+
+    if (query.encircleUrl != null) {
+        urls.push({
+            url: query.encircleUrl,
+            name: query.encircleUrl,
         });
     }
 
